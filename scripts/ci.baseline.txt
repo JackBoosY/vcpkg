@@ -562,11 +562,8 @@ grpc:arm-uwp=fail
 gsl:arm-uwp=fail
 gsl:x64-uwp=fail
 # https://github.com/microsoft/vcpkg/pull/11048/files
-gsoap:arm-uwp=fail
-gsoap:arm64-windows=fail
 gsoap:x64-linux=fail
 gsoap:x64-osx=fail
-gsoap:x64-uwp=fail
 gsoap:x64-windows-static=fail
 gsoap:x64-windows=fail
 gsoap:x86-windows=fail
@@ -1357,10 +1354,7 @@ parmetis:x64-linux=fail
 parmetis:x64-osx=fail
 # https://github.com/microsoft/vcpkg/issues/11050
 pbc:arm-uwp=fail
-pbc:x86-windows=fail
-pbc:x64-windows=fail
 pbc:x64-uwp=fail
-pbc:x64-windows-static=fail
 pcre2:arm-uwp=fail
 pdal:x64-linux=fail
 pdal:x64-osx=fail
