@@ -1,0 +1,12 @@
+diff --git a/build/cmake/config.cmake b/build/cmake/config.cmake
+index 4e22ee9..06f54c0 100644
+--- a/build/cmake/config.cmake
++++ b/build/cmake/config.cmake
+@@ -78,6 +78,7 @@ macro(wx_get_dependencies var lib)
+             endif()
+             wx_string_append(${var} "${dep_name} ")
+         endforeach()
++        wx_string_append(${var} "-lX11 -lgtk-3 -lgdk-3")
+         string(STRIP ${${var}} ${var})
+     endif()
+ endmacro()

@@ -14,6 +14,7 @@ vcpkg_from_github(
         export-targets.patch
         fix-file-generate.patch
         fix-wxconfig-libs-output.patch
+        workaround-for-x11.patch
 )
 
 set(OPTIONS)
