@@ -12,6 +12,7 @@ vcpkg_from_github(
         fix-wx-config-path.patch
         fix-install-path.patch
         export-targets.patch
+        fix-file-generate.patch
         fix-wxconfig-libs-output.patch
 )
 
@@ -86,6 +87,14 @@ if(NOT EXISTS "${CURRENT_PACKAGES_DIR}/include/wx/setup.h")
     string(REPLACE "/setup.h" "" WX_SETUP_H_REL_RELATIVE "${WX_SETUP_H_FILES_REL}")
     
     configure_file("${CMAKE_CURRENT_LIST_DIR}/setup.h.in" "${CURRENT_PACKAGES_DIR}/include/wx/setup.h" @ONLY)
+endif()
+
+# Fix the abs path in wx-config
+if (NOT VCPKG_TARGET_IS_WINDOWS)
+    file(READ "${CURRENT_PACKAGES_DIR}/tools/wxwidgets/wx-config" _contents)
+    string(REGEX REPLACE "${CURRENT_PACKAGES_DIR}" "\${prefix}" _contents "${_contents}")
+    string(REGEX REPLACE "${CURRENT_INSTALLED_DIR}" "\${prefix}" _contents "${_contents}")
+    file(WRITE "${CURRENT_PACKAGES_DIR}/tools/wxwidgets/wx-config" "${_contents}")
 endif()
 
 configure_file("${CMAKE_CURRENT_LIST_DIR}/vcpkg-cmake-wrapper.cmake.in"
